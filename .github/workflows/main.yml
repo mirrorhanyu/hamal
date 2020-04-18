@@ -17,7 +17,6 @@ jobs:
           brew reinstall python
           pip3 install virtualenv
       - name: Run
-        env:
         run: |
           virtualenv --python=python3 env
           source env/bin/activate
