@@ -1,0 +1,36 @@
+name: hamal
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run:
+    name: run
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          brew update
+          brew reinstall python
+          pip3 install virtualenv
+      - name: Run
+        env:
+        run: |
+          virtualenv --python=python3 env
+          source env/bin/activate
+          pip install -r requirements.txt
+          python main.py
+      - name: Archive AUXOUT
+        uses: actions/upload-artifact@v1
+        with:
+          name: AUXOUT
+          path: AUXOUT
+      - name: Archive TED-Ed
+          uses: actions/upload-artifact@v1
+          with:
+            name: TED-Ed
+            path: TED-Ed
+
