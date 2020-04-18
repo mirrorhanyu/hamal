@@ -29,8 +29,8 @@ jobs:
           name: AUXOUT
           path: AUXOUT
       - name: Archive TED-Ed
-          uses: actions/upload-artifact@v1
-          with:
-            name: TED-Ed
-            path: TED-Ed
+        uses: actions/upload-artifact@v1
+        with:
+          name: TED-Ed
+          path: TED-Ed
 
