@@ -19,5 +19,8 @@ class TEDEducation(SubscriptionBase):
     def get_subscription_name(self) -> str:
         return 'TED-Ed'
 
+    def get_google_drive_folder(self) -> List[str]:
+        return ['1Ghgv4WWsm330PXBC0OJ5GxRdVjfQ9afZ']
+
 
 ted_education = TEDEducation()

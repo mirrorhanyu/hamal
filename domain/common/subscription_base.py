@@ -14,5 +14,6 @@ class SubscriptionBase(ABC):
     def get_subscription_name(self) -> str:
         return ''
 
-
-
+    @abstractmethod
+    def get_google_drive_folder(self) -> List[str]:
+        return []

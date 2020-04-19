@@ -19,5 +19,8 @@ class AUXOUT(SubscriptionBase):
     def get_subscription_name(self) -> str:
         return 'AUXOUT'
 
+    def get_google_drive_folder(self) -> List[str]:
+        return ['1YFbaAwgxuYUAIVJXa5A4_aDiulVPR_T7']
+
 
 auxout = AUXOUT()

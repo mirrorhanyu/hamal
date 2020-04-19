@@ -73,6 +73,6 @@ venv.bak/
 dmypy.json
 .pyre/
 
-google_drive_service_account.json
+google-service-account-credential.json
 
 .idea/
