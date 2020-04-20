@@ -1,4 +1,4 @@
-from domain.common.youtube_entry import YoutubeEntry
+from youtube.domain.model.common.youtube_entry import YoutubeEntry
 
 
 class YoutubeFeed:

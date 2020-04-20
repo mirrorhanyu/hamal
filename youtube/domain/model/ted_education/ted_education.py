@@ -3,16 +3,17 @@ from typing import List
 import requests
 import xmltodict
 
-from domain.common.subscription_base import SubscriptionBase
-from domain.common.youtube_entry import YoutubeEntry
-from domain.common.youtube_feed import YoutubeFeed
+from youtube.domain.model.common.subscription_base import SubscriptionBase
+from youtube.domain.model.common.youtube_entry import YoutubeEntry
+from youtube.domain.model.common.youtube_feed import YoutubeFeed
 
 
 class TEDEducation(SubscriptionBase):
-    youtube_rss = 'https://www.youtube.com/feeds/videos.xml?user=TEDEducation'
+
+    YOUTUBE_RSS = 'https://www.youtube.com/feeds/videos.xml?user=TEDEducation'
 
     def get_new_publishes(self) -> List[YoutubeEntry]:
-        youtube_rss_xml = requests.get(self.youtube_rss).text
+        youtube_rss_xml = requests.get(self.YOUTUBE_RSS).text
         youtube_rss = xmltodict.parse(youtube_rss_xml)
         return YoutubeFeed(youtube_rss).entries[::-1][0:1]
 

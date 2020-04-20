@@ -1,7 +1,7 @@
 from abc import abstractmethod, ABC
 from typing import List
 
-from domain.common.youtube_entry import YoutubeEntry
+from youtube.domain.model.common.youtube_entry import YoutubeEntry
 
 
 class SubscriptionBase(ABC):

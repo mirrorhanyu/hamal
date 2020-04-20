@@ -1,17 +1,10 @@
-from domain.auxout.auxout import auxout
-from domain.ted_education.ted_education import ted_education
-from google.google_application_service import GoogleApplicationService as Google
-from utils.file_utils import remove_folder
-from youtube.youtube_application_service import YoutubeApplicationService as Youtube
+from google.application.google_application_service import GoogleApplicationService as Google
+from youtube.application.youtube_application_service import YoutubeApplicationService as Youtube
 
-subscriptions = [
-    ted_education,
-    auxout
-]
+from utils import file_utils
 
-new_publishes_each_subscription = [
-    Youtube.get_new_publishes(subscription) for subscription in subscriptions
-]
+subscriptions = Youtube.get_subscriptions()
+new_publishes_each_subscription = Youtube.get_new_publishes(subscriptions)
 
 for subscription, new_publishes in zip(subscriptions, new_publishes_each_subscription):
     for new_publish in new_publishes:
@@ -20,4 +13,4 @@ for subscription, new_publishes in zip(subscriptions, new_publishes_each_subscri
                                       file_name=new_publish.title,
                                       local_file_path=subscription.get_subscription_name(),
                                       description=new_publish.to_google_drive_description())
-        remove_folder(subscription.get_subscription_name())
+        file_utils.remove_folder(subscription.get_subscription_name())
