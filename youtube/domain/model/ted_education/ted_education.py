@@ -10,18 +10,21 @@ from youtube.domain.model.common.youtube_feed import YoutubeFeed
 
 class TEDEducation(SubscriptionBase):
 
-    YOUTUBE_RSS = 'https://www.youtube.com/feeds/videos.xml?user=TEDEducation'
+    YOUTUBE_RSS = 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLJicmE8fK0EiTqtnTb9Mjb4UUyMt39YVQ'
 
     def get_new_publishes(self) -> List[YoutubeEntry]:
         youtube_rss_xml = requests.get(self.YOUTUBE_RSS).text
         youtube_rss = xmltodict.parse(youtube_rss_xml)
-        return YoutubeFeed(youtube_rss).entries[::-1][0:1]
+        return YoutubeFeed(youtube_rss).entries[::-1][1:2]
 
     def get_subscription_name(self) -> str:
         return 'TED-Ed'
 
     def get_google_drive_folder(self) -> List[str]:
         return ['1Ghgv4WWsm330PXBC0OJ5GxRdVjfQ9afZ']
+
+    def get_subtitles_regex(self) -> (str, str):
+        return '.zh-CN.srt', '.es.srt'
 
 
 ted_education = TEDEducation()

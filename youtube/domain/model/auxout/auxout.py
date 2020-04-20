@@ -23,5 +23,8 @@ class AUXOUT(SubscriptionBase):
     def get_google_drive_folder(self) -> List[str]:
         return ['1YFbaAwgxuYUAIVJXa5A4_aDiulVPR_T7']
 
+    def get_subtitles_regex(self) -> (str, str):
+        return None, None
+
 
 auxout = AUXOUT()

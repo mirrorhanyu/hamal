@@ -17,3 +17,7 @@ class SubscriptionBase(ABC):
     @abstractmethod
     def get_google_drive_folder(self) -> List[str]:
         return []
+
+    @abstractmethod
+    def get_subtitles_regex(self) -> (str, str):
+        return '', ''
