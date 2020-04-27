@@ -3,4 +3,4 @@ requests
 you-get
 google-api-python-client
 python-magic-bin
-moviepy
+moviepy==1.0.0
