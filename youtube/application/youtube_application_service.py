@@ -26,6 +26,7 @@ class YoutubeApplicationService:
     @staticmethod
     def add_subtitle(subscription: SubscriptionBase):
         default_regex, translation_regex = subscription.get_subtitles_regex()
+        print('subtitle_regex', default_regex, translation_regex)
         video, default_subtitle, translated_subtitle = None, None, None
         for file in glob.glob(f'{subscription.get_subscription_name()}/*'):
             if is_video(file):
@@ -34,4 +35,5 @@ class YoutubeApplicationService:
                 default_subtitle = file
             if translation_regex and translation_regex in file:
                 translated_subtitle = file
+        print('subtitle', default_regex)
         add_subtitle(video, default_subtitle)
