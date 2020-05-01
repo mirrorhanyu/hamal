@@ -10,7 +10,7 @@ from youtube.domain.model.common.youtube_feed import YoutubeFeed
 
 class TEDEducation(SubscriptionBase):
 
-    YOUTUBE_RSS = 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLJicmE8fK0EiTqtnTb9Mjb4UUyMt39YVQ'
+    YOUTUBE_RSS = 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLJicmE8fK0EixypMdb334L4cB_2vv2kXg'
 
     def get_new_publishes(self) -> List[YoutubeEntry]:
         youtube_rss_xml = requests.get(self.YOUTUBE_RSS).text
@@ -24,7 +24,7 @@ class TEDEducation(SubscriptionBase):
         return ['1Ghgv4WWsm330PXBC0OJ5GxRdVjfQ9afZ']
 
     def get_subtitles_regex(self) -> (str, str):
-        return '.zh-CN.srt', '.es.srt'
+        return '.zh-CN.srt', '.en.srt'
 
 
 ted_education = TEDEducation()

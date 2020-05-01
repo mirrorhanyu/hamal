@@ -4,7 +4,7 @@ from typing import List
 from utils.file_utils import is_video
 from youtube.domain.model.common.subscription_base import SubscriptionBase
 from youtube.domain.model.common.youtube_entry import YoutubeEntry
-from youtube.domain.model.auxout.auxout import auxout
+# from youtube.domain.model.auxout.auxout import auxout
 from youtube.domain.model.ted_education.ted_education import ted_education
 from youtube.infrastructure.youtube_service import get_youtube_downloader, add_subtitle
 
@@ -13,7 +13,7 @@ class YoutubeApplicationService:
 
     @staticmethod
     def get_subscriptions():
-        return [ted_education, auxout]
+        return [ted_education]
 
     @staticmethod
     def get_new_publishes(subscriptions: List[SubscriptionBase]) -> List[List[YoutubeEntry]]:
@@ -34,4 +34,4 @@ class YoutubeApplicationService:
                 default_subtitle = file
             if translation_regex and translation_regex in file:
                 translated_subtitle = file
-        add_subtitle(video, default_subtitle or translated_subtitle, default_subtitle and translated_subtitle)
+        add_subtitle(video, default_subtitle)
