@@ -29,7 +29,7 @@ def add_subtitle(video_path, default_subtitle_path):
 def _subtitle_generator(font_size):
     return lambda txt: TextClip(
         txt,
-        font='ArialUnicode',
+        font='assets/font/PingFang.ttf',
         fontsize=font_size,
         color='white',
         bg_color='#00000066'
