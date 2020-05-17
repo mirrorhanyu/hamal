@@ -34,4 +34,4 @@ class YoutubeApplicationService:
                 default_subtitle = file
             if translation_regex and translation_regex in file:
                 translated_subtitle = file
-        add_subtitle(video, default_subtitle)
+        add_subtitle(video, default_subtitle, translated_subtitle)

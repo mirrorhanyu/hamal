@@ -12,25 +12,40 @@ def get_youtube_downloader():
     return youtube
 
 
-def add_subtitle(video_path, default_subtitle_path):
+def add_subtitle(video_path, default_subtitle_path, translated_subtitle_path):
     if default_subtitle_path is None:
         return
     default_subtitle = margin(
-        clip=SubtitlesClip(default_subtitle_path, _subtitle_generator(30)).set_position(('center', 'bottom')),
-        bottom=35,
+        clip=SubtitlesClip(default_subtitle_path, default_subtitle_generator()).set_position(('center', 'bottom')),
+        bottom=60,
+        opacity=0
+    )
+    translated_subtitle = margin(
+        clip=SubtitlesClip(translated_subtitle_path, translation_subtitle_generator()).set_position(('center', 'bottom')),
+        bottom=30,
         opacity=0
     )
     video = VideoFileClip(video_path, audio=True)
-    composed_video = CompositeVideoClip([video, default_subtitle])
+    composed_video = CompositeVideoClip([video, default_subtitle, translated_subtitle])
     output_filename = replace_extension(add_prefix_to_filename(video_path, '[WITH-SUBTITLE] '), '.mp4')
     composed_video.write_videofile(output_filename, threads=2, fps=video.fps)
 
 
-def _subtitle_generator(font_size):
+def default_subtitle_generator():
     return lambda txt: TextClip(
-        txt,
+        txt.replace('\n', ''),
         font='assets/font/PingFang.ttf',
-        fontsize=font_size,
+        fontsize=35,
+        color='white',
+        bg_color='#00000066'
+    )
+
+
+def translation_subtitle_generator():
+    return lambda txt: TextClip(
+        txt.replace('\n', ''),
+        font='assets/font/GothamMedium.ttf',
+        fontsize=28,
         color='white',
         bg_color='#00000066'
     )

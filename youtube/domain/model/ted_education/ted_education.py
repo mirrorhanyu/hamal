@@ -10,12 +10,12 @@ from youtube.domain.model.common.youtube_feed import YoutubeFeed
 
 class TEDEducation(SubscriptionBase):
 
-    YOUTUBE_RSS = 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLJicmE8fK0EixypMdb334L4cB_2vv2kXg'
+    YOUTUBE_RSS = 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLJicmE8fK0EiskDjD7XE9hMTRnwFtWj1Y'
 
     def get_new_publishes(self) -> List[YoutubeEntry]:
         youtube_rss_xml = requests.get(self.YOUTUBE_RSS).text
         youtube_rss = xmltodict.parse(youtube_rss_xml)
-        return YoutubeFeed(youtube_rss).entries[::-1][1:2]
+        return YoutubeFeed(youtube_rss).entries[::-1]
 
     def get_subscription_name(self) -> str:
         return 'TED-Ed'
