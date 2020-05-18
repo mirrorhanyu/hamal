@@ -16,18 +16,13 @@ def upload(subscription: SubscriptionBase, youtube_entry: YoutubeEntry):
     tid = subscription.get_bilibili_video_type()
     tags = subscription.get_bilibili_video_tags()
     source = subscription.get_bilibili_source()
-    print('=====================================')
-    print(video_to_be_uploaded, tid, tags, source)
-    print(title)
-    print(description)
-    print('=====================================')
-    # bilibili_upload.upload(
-    #     parts=[VideoPart(path=video_to_be_uploaded, title=title, desc=description)],
-    #     title=title,
-    #     tid=tid,
-    #     tag=tags,
-    #     desc=description,
-    #     source=source,
-    #     cover='',
-    #     dynamic=''
-    # )
+    bilibili_upload.upload(
+        parts=[VideoPart(path=video_to_be_uploaded, title=title, desc=description)],
+        title=title,
+        tid=tid,
+        tag=tags,
+        desc=description,
+        source=source,
+        cover='',
+        dynamic=''
+    )

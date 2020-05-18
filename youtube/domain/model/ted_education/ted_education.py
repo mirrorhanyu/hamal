@@ -43,11 +43,11 @@ class TEDEducation(SubscriptionBase):
         return self.BILIBILI_SOURCE
 
     def get_bilibili_title(self, origin_title: str) -> str:
-        chinese_title = translator.translate(origin_title, dest='zh-cn')
+        chinese_title = translator.translate(origin_title, dest='zh-cn').text
         return f'#TED# {chinese_title}'[:80]
 
     def get_bilibili_description(self, origin_description: str) -> str:
-        return origin_description[:250]
+        return origin_description.replace('\n\n', '\n')[:250]
 
 
 ted_education = TEDEducation()
