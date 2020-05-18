@@ -17,7 +17,7 @@ def add_subtitle(video_path, default_subtitle_path, translated_subtitle_path):
         return
     default_subtitle = margin(
         clip=SubtitlesClip(default_subtitle_path, default_subtitle_generator()).set_position(('center', 'bottom')),
-        bottom=70,
+        bottom=80,
         opacity=0
     )
     translated_subtitle = margin(
@@ -35,8 +35,8 @@ def default_subtitle_generator():
     return lambda txt: TextClip(
         txt.replace('\n', ''),
         font='assets/font/PingFang.ttf',
-        fontsize=40,
-        stroke_width=1.5,
+        fontsize=45,
+        stroke_width=2,
         color='white',
         bg_color='#00000066'
     )
@@ -46,7 +46,7 @@ def translation_subtitle_generator():
     return lambda txt: TextClip(
         txt.replace('\n', ''),
         font='assets/font/GothamMedium.ttf',
-        fontsize=32,
+        fontsize=36,
         color='white',
         bg_color='#00000066'
     )
