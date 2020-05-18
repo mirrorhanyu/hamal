@@ -23,6 +23,9 @@ jobs:
           brew reinstall python
           pip3 install virtualenv
       - name: Run
+        env:
+          BILIBILI_USERNAME: ${{ secrets.BILIBILI_USERNAME }}
+          BILIBILI_PASSWORD: ${{ secrets.BILIBILI_PASSWORD }}
         run: |
           virtualenv --python=python3 env
           source env/bin/activate

@@ -4,3 +4,5 @@ you-get
 google-api-python-client
 python-magic-bin
 moviepy==1.0.3
+googletrans==2.4.0
+bilibiliupload==0.2.3
