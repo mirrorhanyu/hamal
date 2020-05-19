@@ -22,7 +22,7 @@ class TEDEducation(SubscriptionBase):
     def get_new_publishes(self) -> List[YoutubeEntry]:
         youtube_rss_xml = requests.get(self.YOUTUBE_RSS).text
         youtube_rss = xmltodict.parse(youtube_rss_xml)
-        return YoutubeFeed(youtube_rss).entries[::-1][1:2]
+        return YoutubeFeed(youtube_rss).entries[::-1]
 
     def get_subscription_name(self) -> str:
         return 'TED-Ed'
